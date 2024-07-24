@@ -11,11 +11,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.cards.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private val abracadabra = listOf<String>("♠","♥", "♦", "♣")
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var chervi = binding.chervi
     }
 
     fun cherviClick(view: View) {}
