@@ -1,3 +1,9 @@
 package com.example.cards
 
-data class CardModel(val id: Int, val imageResource: Int)
+import android.widget.ImageView
+
+class CardModel(
+    private val imageView: ImageView
+){
+
+}
