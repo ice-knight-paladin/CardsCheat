@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cards.a.KEY_COLODAMAIN
 import com.example.cards.a.KEY_V
@@ -71,10 +72,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.show.setOnClickListener{
-            val intent = Intent(this, ShowColoda::class.java)
-            intent.putExtra(SHOW, hash)
-            startActivity(intent)
-            finish()
+            if (hash.isclearpar()){
+                val intent = Intent(this, ShowColoda::class.java)
+                intent.putExtra(SHOW, hash)
+                startActivity(intent)
+                finish()
+            }
+            else Toast.makeText(this, "Ввод или сборс?", Toast.LENGTH_SHORT).show()
         }
     }
 

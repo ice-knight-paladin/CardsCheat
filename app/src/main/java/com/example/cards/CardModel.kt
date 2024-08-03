@@ -5,7 +5,7 @@ import android.widget.ImageView
 import java.io.Serializable
 
 class CardModel(private val coloda: HashMap<Int, String>) : Serializable {
-    private var par = HashMap<Int, String>()
+    var par = HashMap<Int, String>()
     fun intel(imageView: Int) {
         coloda[imageView] = "♠♥♦♣"
         par[imageView] = ""
@@ -28,8 +28,18 @@ class CardModel(private val coloda: HashMap<Int, String>) : Serializable {
         } else {
             for (i in par.keys) {
                 coloda[i] = coloda[i] + par[i]
+                par[i] = ""
             }
         }
+    }
+
+    fun isclearpar(): Boolean {
+        for (i in par.keys) {
+            if (par[i] != "") {
+                return false
+            }
+        }
+        return true
     }
 
     fun getcoloda(): HashMap<Int, String> = coloda

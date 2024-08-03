@@ -23,17 +23,27 @@ class ShowColoda : AppCompatActivity() {
 
         coloda_hash = (intent.extras!!.getSerializable(SHOW) as CardModel).getcoloda()
         val myItemsAdapterbubna = MyItemsAdapter()
-        val myItemsAdapterbubnaalpha = MyItemsAdapter()
+        val myItemsAdapterpici = MyItemsAdapter()
+        val myItemsAdaptercresti = MyItemsAdapter()
+        val myItemsAdapterchervi = MyItemsAdapter()
+
         binding.recyclerbubna.adapter = myItemsAdapterbubna
-        binding.recyclerbubnaalpha.adapter = myItemsAdapterbubnaalpha
+        binding.recyclerpiki.adapter = myItemsAdapterpici
+        binding.recyclerchervi.adapter = myItemsAdapterchervi
+        binding.recyclercresti.adapter = myItemsAdaptercresti
 
         for (i in coloda_hash.keys) {
             if (coloda_hash[i]!!.contains("♦")){
                 myItemsAdapterbubna.add(cheakId_main(i))
-                myItemsAdapterbubnaalpha.add(ImageView(this).apply {
-                    this.setImageResource(R.drawable.bubna)
-                    this.alpha = 0.5F
-                })
+            }
+            if (coloda_hash[i]!!.contains("♥")){
+                myItemsAdapterchervi.add(cheakId_main(i))
+            }
+            if (coloda_hash[i]!!.contains("♠")){
+                myItemsAdaptercresti.add(cheakId_main(i))
+            }
+            if (coloda_hash[i]!!.contains("♣")){
+                myItemsAdapterpici.add(cheakId_main(i))
             }
         }
     }
