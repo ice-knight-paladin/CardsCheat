@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    var coloda = HashMap<ImageView, String>()
+    var coloda = HashMap<Int, String>()
+    var hash:CardModel = CardModel(coloda)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         images.add(imageJOKER)
         if (coloda.isEmpty()) {
             for (i in images) {
-                coloda[i] = "♠♥♦♣"
+                hash.intel(i.id)
             }
         }
     }
@@ -63,22 +64,9 @@ class MainActivity : AppCompatActivity() {
     public fun onClick(v: View) {
         if (v.javaClass.toString() == "class androidx.appcompat.widget.AppCompatImageView") {
             val intent = Intent(this, DetalCards::class.java)
-//            intent.putExtra(KEY_V, ImageTry(v))
-            try {
-                startActivity(intent)
-            }catch (e:Exception){
-
-            }
+            intent.putExtra(CardModel::class.simpleName, hash)
+            intent.putExtra(KEY_V, v.id)
+            startActivity(intent)
         }
     }
-
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        outState.putSerializable(KEY_COLODAMAIN, coloda)
-//    }
-//
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        coloda = savedInstanceState.getSerializable(KEY_COLODA) as HashMap<ImageView, String>
-//    }
 }

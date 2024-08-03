@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         app:srcCompat="@drawable/chervi"
-        android:onClick="onClick"/>
+        android:onClick="onClick" />
 
     <ImageView
         android:id="@+id/pici"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         app:srcCompat="@drawable/pici"
-        android:onClick="onClick"/>
+        android:onClick="onClick" />
 
     <ImageView
         android:id="@+id/cresti"
@@ -39,5 +39,5 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         app:srcCompat="@drawable/cresti"
-        android:onClick="onClick"/>
+        android:onClick="onClick" />
 </LinearLayout>

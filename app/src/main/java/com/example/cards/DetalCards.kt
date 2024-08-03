@@ -3,8 +3,10 @@ package com.example.cards
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Im
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,40 +18,76 @@ import com.example.cards.databinding.ActivityDetalCardsBinding
 import com.example.cards.databinding.ActivityMainBinding
 
 class DetalCards : AppCompatActivity() {
-    lateinit var arg: ImageTry
-    lateinit var coloda: HashMap<ImageView, String>
+    lateinit var coloda_hash: CardModel
     lateinit var binding: ActivityDetalCardsBinding
+    private var arg: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetalCardsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        arg = intent.extras?.get(KEY_V) as ImageTry
-//    }
-//    //♠♥♦♣
-//    public fun onClick(v: View) {
-//        if (v.id == binding.bubna.id) {
-//            if (coloda[arg.get()]?.contains("♠") == true){
-//                coloda[arg.get()]!!.replace("♠", "")
-//            } else if(coloda[arg.get()]?.contains("♥") == true){
-//                coloda[arg.get()]!!.replace("♥", "")
-//            }else if(coloda[arg.get()]?.contains("♦") == true){
-//                coloda[arg.get()]!!.replace("♦", "")
-//            }else if(coloda[arg.get()]?.contains("♣") == true){
-//                coloda[arg.get()]!!.replace("♣", "")
-//            }
-//        }
-//        for (i in coloda){
-//            println(coloda[i as View])
-//        }
-  }
+        coloda_hash = intent.extras!!.getSerializable(CardModel::class.simpleName) as CardModel
+        arg = intent.extras!!.getInt(KEY_V)
+    }
 
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        super.onSaveInstanceState(outState)
-//        outState.putSerializable(KEY_COLODA, coloda)
-//    }
+    //♠♥♦♣
+    public fun onClick(v: View) {
+//        val bind = ActivityMainBinding.inflate(layoutInflater)
+        if (v.id == binding.bubna.id) {
+            if (coloda_hash.delete(arg, "♦")) {
+                Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Daun, такой уже ушел", Toast.LENGTH_SHORT).show()
+            }
+        } else if (v.id == binding.chervi.id) {
+            if (coloda_hash.delete(arg, "♥")) {
+                Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Daun, такой уже ушел", Toast.LENGTH_SHORT).show()
+            }
+        }else if (v.id == binding.cresti.id) {
+            if (coloda_hash.delete(arg, "♠")) {
+                Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Daun, такой уже ушел", Toast.LENGTH_SHORT).show()
+            }
+        } else{
+            if (coloda_hash.delete(arg, "♣")) {
+                Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Daun, такой уже ушел", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+//    fun cheakId(id: Int): ImageView {
+//        val bind = ActivityMainBinding.inflate(layoutInflater)
 //
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        coloda = savedInstanceState.getSerializable(KEY_COLODAMAIN) as HashMap<ImageView, String>
-//    }
+//        if (bind.image2.id == id) {
+//            return bind.image2
+//        } else if (bind.image3.id == id) {
+//            return bind.image3
+//        } else if (bind.image4.id == id) {
+//            return bind.image4
+//        } else if (bind.image5.id == id) {
+//            return bind.image5
+//        } else if (bind.image6.id == id) {
+//            return bind.image6
+//        } else if (bind.image7.id == id) {
+//            return bind.image7
+//        } else if (bind.image8.id == id) {
+//            return bind.image8
+//        } else if (bind.image9.id == id) {
+//            return bind.image9
+//        } else if (bind.image10.id == id) {
+//            return bind.image10
+//        } else if (bind.imageJ.id == id) {
+//            return bind.imageJ
+//        } else if (bind.imageQ.id == id) {
+//            return bind.imageQ
+//        } else if (bind.imageK.id == id) {
+//            return bind.imageK
+//        } else if (bind.imageA.id == id) {
+//            return bind.imageA
+//        } else {
+//            return bind.imageJOKER
+//        }
 }
