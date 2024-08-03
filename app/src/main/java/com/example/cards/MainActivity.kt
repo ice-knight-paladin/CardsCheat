@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cards.a.KEY_COLODAMAIN
 import com.example.cards.a.KEY_V
-import com.example.cards.a.KEY_COLODA
+import com.example.cards.a.SHOW
 import com.example.cards.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     var coloda = HashMap<Int, String>()
-    var hash:CardModel = CardModel(coloda)
+    var hash: CardModel = CardModel(coloda)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,19 +54,40 @@ class MainActivity : AppCompatActivity() {
         images.add(imageA)
         val imageJOKER = binding.imageJOKER
         images.add(imageJOKER)
-        if (coloda.isEmpty()) {
-            for (i in images) {
-                hash.intel(i.id)
+        if (intent.extras?.getSerializable(KEY_COLODAMAIN) == null) {
+            if (coloda.isEmpty()) {
+                for (i in images) {
+                    hash.intel(i.id)
+                }
             }
+        }else hash = intent.extras?.getSerializable(KEY_COLODAMAIN) as CardModel
+
+        binding.sbros.setOnClickListener{
+            hash.update(true)
+        }
+
+        binding.vvod.setOnClickListener{
+            hash.update(false)
+        }
+
+        binding.show.setOnClickListener{
+            val intent = Intent(this, ShowColoda::class.java)
+            intent.putExtra(SHOW, hash)
+            startActivity(intent)
+            finish()
         }
     }
 
     public fun onClick(v: View) {
+//        hash.printall()
         if (v.javaClass.toString() == "class androidx.appcompat.widget.AppCompatImageView") {
             val intent = Intent(this, DetalCards::class.java)
             intent.putExtra(CardModel::class.simpleName, hash)
             intent.putExtra(KEY_V, v.id)
             startActivity(intent)
+            finish()
         }
     }
+
+
 }

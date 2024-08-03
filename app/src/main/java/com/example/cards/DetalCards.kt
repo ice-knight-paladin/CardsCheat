@@ -11,7 +11,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.cards.a.KEY_COLODA
 import com.example.cards.a.KEY_COLODAMAIN
 import com.example.cards.a.KEY_V
 import com.example.cards.databinding.ActivityDetalCardsBinding
@@ -34,29 +33,43 @@ class DetalCards : AppCompatActivity() {
 //        val bind = ActivityMainBinding.inflate(layoutInflater)
         if (v.id == binding.bubna.id) {
             if (coloda_hash.delete(arg, "♦")) {
-                Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+                nextActivity()
             } else {
                 Toast.makeText(this, "Daun, такой уже ушел", Toast.LENGTH_SHORT).show()
             }
         } else if (v.id == binding.chervi.id) {
             if (coloda_hash.delete(arg, "♥")) {
-                Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+                nextActivity()
             } else {
                 Toast.makeText(this, "Daun, такой уже ушел", Toast.LENGTH_SHORT).show()
             }
-        }else if (v.id == binding.cresti.id) {
+        } else if (v.id == binding.cresti.id) {
             if (coloda_hash.delete(arg, "♠")) {
-                Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+                nextActivity()
             } else {
                 Toast.makeText(this, "Daun, такой уже ушел", Toast.LENGTH_SHORT).show()
             }
-        } else{
+        } else {
             if (coloda_hash.delete(arg, "♣")) {
-                Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+                nextActivity()
             } else {
                 Toast.makeText(this, "Daun, такой уже ушел", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    fun nextActivity(){
+        Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra(KEY_COLODAMAIN, coloda_hash)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 //    fun cheakId(id: Int): ImageView {
 //        val bind = ActivityMainBinding.inflate(layoutInflater)

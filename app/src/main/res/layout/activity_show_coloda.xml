@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShowColoda"
+    android:alpha="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/title"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="карты которые не выбыли из игры" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerbubna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerchervi"
+        android:alpha="0.5"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerbubnaalpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerchervi"
+        android:alpha="0.5"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerchervi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerbubna"
+        app:layout_constraintBottom_toTopOf="@+id/recyclercresti"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerchervialpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerbubna"
+        app:layout_constraintBottom_toTopOf="@+id/recyclercresti"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclercresti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerchervi"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerpiki"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclercrestialpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerchervi"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerpiki"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerpiki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclercresti"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
