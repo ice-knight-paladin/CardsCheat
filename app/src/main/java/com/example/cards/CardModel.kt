@@ -1,7 +1,5 @@
 package com.example.cards
 
-import android.content.Intent
-import android.widget.ImageView
 import java.io.Serializable
 
 class CardModel(private val coloda: HashMap<Int, String>) : Serializable {

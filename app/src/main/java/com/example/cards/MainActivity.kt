@@ -65,10 +65,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.sbros.setOnClickListener{
             hash.update(true)
+            toastshow()
         }
 
         binding.vvod.setOnClickListener{
             hash.update(false)
+            toastshow()
         }
 
         binding.show.setOnClickListener{
@@ -82,8 +84,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun toastshow(){
+        Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+    }
+
     public fun onClick(v: View) {
-//        hash.printall()
         if (v.javaClass.toString() == "class androidx.appcompat.widget.AppCompatImageView") {
             val intent = Intent(this, DetalCards::class.java)
             intent.putExtra(CardModel::class.simpleName, hash)
